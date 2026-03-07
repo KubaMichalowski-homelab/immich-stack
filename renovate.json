@@ -1,0 +1,18 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>kuba-homelab/.github:renovate-config"
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["docker.io/valkey/valkey"],
+      "enabled": false
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/immich-app/postgres"],
+      "allowedVersions": "14"
+    }
+  ]
+}
