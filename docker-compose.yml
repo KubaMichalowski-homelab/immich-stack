@@ -33,14 +33,14 @@ services:
       DB_DATABASE_NAME: ${DB_NAME}
       DB_PORT: ${DB_PORT}
       REDIS_HOSTNAME: ${REDIS_HOSTNAME}
-    restart: always
+    restart: unless-stopped
     networks:
       - immich-network
 
   redis:
     image: redis:6.2-alpine@sha256:70a7a5b641117670beae0d80658430853896b5ef269ccf00d1827427e3263fa3
     container_name: redis
-    restart: always
+    restart: unless-stopped
     networks:
       - immich-network
 
@@ -54,7 +54,7 @@ services:
       PG_DATA: /var/lib/postgresql/data
     volumes:
       - immich_postgres:/var/lib/postgresql/data
-    restart: always
+    restart: unless-stopped
     networks:
       - immich-network
 
