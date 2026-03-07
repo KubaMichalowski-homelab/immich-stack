@@ -1,7 +1,7 @@
 services:
   immich-server:
+    image: ghcr.io/immich-app/immich-server:v2.5.6
     container_name: immich-server
-    image: ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}
     ports:
       - 2283:2283
     volumes:
@@ -22,8 +22,8 @@ services:
       - immich-network
 
   immich-machine-learning:
+    image: ghcr.io/immich-app/immich-machine-learning:v2.5.6
     container_name: immich-machine-learning
-    image: ghcr.io/immich-app/immich-machine-learning:${IMMICH_VERSION:-release}
     volumes:
       - immich_cache:/cache
     environment:
@@ -38,15 +38,15 @@ services:
       - immich-network
 
   redis:
-    container_name: redis
     image: redis:6.2-alpine@sha256:70a7a5b641117670beae0d80658430853896b5ef269ccf00d1827427e3263fa3
+    container_name: redis
     restart: always
     networks:
       - immich-network
 
   database:
-    container_name: postgres
     image: tensorchord/pgvecto-rs:pg14-v0.2.0
+    container_name: postgres
     environment:
       POSTGRES_PASSWORD: portainer
       POSTGRES_USER: portainer
