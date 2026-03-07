@@ -25,7 +25,7 @@ services:
     image: ghcr.io/immich-app/immich-machine-learning:v2.5.6
     container_name: immich-machine-learning
     volumes:
-      - immich_cache:/cache
+      - /opt/docker/immich/cache:/cache
     environment:
       DB_HOSTNAME: ${DB_HOSTNAME}
       DB_USERNAME: ${DB_USERNAME}
@@ -63,7 +63,5 @@ networks:
     driver: bridge
 
 volumes:
-  immich_cache:
-    driver: local
   immich_postgres:
     driver: local
