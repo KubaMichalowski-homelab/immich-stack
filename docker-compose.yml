@@ -7,12 +7,12 @@ services:
     volumes:
       - /opt/docker/immich/upload:/usr/src/app/upload
     environment:
-      DB_HOSTNAME: postgres
-      DB_USERNAME: portainer
-      DB_PASSWORD: portainer
-      DB_DATABASE_NAME: immich
-      DB_PORT: 5432
-      REDIS_HOSTNAME: redis
+      DB_HOSTNAME: ${DB_HOSTNAME}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATABASE_NAME: ${DB_NAME}
+      DB_PORT: ${DB_PORT}
+      REDIS_HOSTNAME: ${REDIS_HOSTNAME}
       IMMICH_MACHINE_LEARNING_URL: http://immich-machine-learning:3003
     depends_on:
       - redis
@@ -27,12 +27,12 @@ services:
     volumes:
       - immich_cache:/cache
     environment:
-      DB_HOSTNAME: postgres
-      DB_USERNAME: portainer
-      DB_PASSWORD: portainer
-      DB_DATABASE_NAME: immich
-      DB_PORT: 5432
-      REDIS_HOSTNAME: redis
+      DB_HOSTNAME: ${DB_HOSTNAME}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATABASE_NAME: ${DB_NAME}
+      DB_PORT: ${DB_PORT}
+      REDIS_HOSTNAME: ${REDIS_HOSTNAME}
     restart: always
     networks:
       - immich-network
@@ -48,9 +48,9 @@ services:
     image: tensorchord/pgvecto-rs:pg14-v0.2.0
     container_name: postgres
     environment:
-      POSTGRES_PASSWORD: portainer
-      POSTGRES_USER: portainer
-      POSTGRES_DB: immich
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
       PG_DATA: /var/lib/postgresql/data
     volumes:
       - immich_postgres:/var/lib/postgresql/data
