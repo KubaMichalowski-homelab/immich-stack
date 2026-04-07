@@ -23,7 +23,7 @@ services:
       - immich-network
 
   immich-machine-learning:
-    image: ghcr.io/immich-app/immich-machine-learning:v2.6.3
+    image: ghcr.io/immich-app/immich-machine-learning:v2.7.0
     container_name: immich-machine-learning
     volumes:
       - /opt/docker/immich/cache:/cache
