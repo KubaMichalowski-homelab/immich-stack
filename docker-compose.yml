@@ -1,6 +1,6 @@
 services:
   immich-server:
-    image: ghcr.io/immich-app/immich-server:v2.7.2
+    image: ghcr.io/immich-app/immich-server:v2.7.3
     container_name: immich-server
     ports:
       - 2283:2283
@@ -23,7 +23,7 @@ services:
       - immich-network
 
   immich-machine-learning:
-    image: ghcr.io/immich-app/immich-machine-learning:v2.7.2
+    image: ghcr.io/immich-app/immich-machine-learning:v2.7.3
     container_name: immich-machine-learning
     volumes:
       - /opt/docker/immich/cache:/cache
