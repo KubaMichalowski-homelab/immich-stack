@@ -9,7 +9,7 @@ The stack relies on the following environment variables (defined in Portainer's 
 | :--- | :--- | :--- |
 | `DB_HOSTNAME` | Database container name | `postgres` |
 | `DB_USERNAME` | Postgres user | `immich` |
-| `DB_PASSWORD` | Postgres password | `(Defined in Secrets)` |
+| `DB_PASSWORD` | Postgres password | `(Secret)` |
 | `DB_NAME` | Database name | `immich` |
 
 ## Persistent Storage
