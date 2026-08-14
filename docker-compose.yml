@@ -2,8 +2,6 @@ services:
   immich-server:
     image: ghcr.io/immich-app/immich-server:v3.1.0
     container_name: immich-server
-    ports:
-      - 2283:2283
     volumes:
       - /opt/docker/immich/upload:/usr/src/app/upload
       - /etc/localtime:/etc/localtime:ro
@@ -26,6 +24,7 @@ services:
     restart: unless-stopped
     networks:
       - immich-network
+      - proxy_network
 
   immich-machine-learning:
     image: ghcr.io/immich-app/immich-machine-learning:v3.1.0
@@ -67,3 +66,5 @@ services:
 networks:
   immich-network:
     driver: bridge
+  proxy_network:
+    external: true
